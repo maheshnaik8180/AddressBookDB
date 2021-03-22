@@ -21,3 +21,28 @@ mysql> show databases;
 | world              |
 +--------------------+
 8 rows in set (0.35 sec)
+
+                                          //Use Case 2
+
+mysql> create table addressbook(First_Name VARCHAR(140) NOT NULL, Last_Name VARCHAR(140) NOT NULL, Address VARCHAR(140), City VARCHAR(50)NOT NULL, State VARCHAR(50)NOT NULL, Zip DOUBLE NOT NULL, Phone_Number DOUBLE NOT NULL, Email_Address VARCHAR(200));
+Query OK, 0 rows affected (0.55 sec)
+
+mysql> select * from addressbook;
+Empty set (0.10 sec)
+
+mysql> desc addressbook;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| First_Name    | varchar(140) | NO   |     | NULL    |       |
+| Last_Name     | varchar(140) | NO   |     | NULL    |       |
+| Address       | varchar(140) | YES  |     | NULL    |       |
+| City          | varchar(50)  | NO   |     | NULL    |       |
+| State         | varchar(50)  | NO   |     | NULL    |       |
+| Zip           | double       | NO   |     | NULL    |       |
+| Phone_Number  | double       | NO   |     | NULL    |       |
+| Email_Address | varchar(200) | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+8 rows in set (0.18 sec)
+
+mysql>
