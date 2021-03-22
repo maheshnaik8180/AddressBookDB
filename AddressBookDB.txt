@@ -107,3 +107,24 @@ mysql> select * from addressbook;
 1 row in set (0.00 sec)
 
 mysql>
+
+
+
+						//USECASE6
+
+mysql> select * from addressbook;
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+
+| First_Name | Last_Name | Address    | City       | State       | Zip    | Phone_Number | Email_Address       | ID |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+
+| Vikas      | Naik      | Pachgaon   | Kolhapur   | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |  2 |
+| Mahesh     | Naik      | Vidyanagar | Gadhinglaj | Maharashtra | 416502 |   9977665652 | naikmahesh.naik     |  3 |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+
+2 rows in set (0.00 sec)
+
+mysql> select * from addressbook where city='kolhapur';
++------------+-----------+----------+----------+-------------+--------+--------------+---------------------+----+
+| First_Name | Last_Name | Address  | City     | State       | Zip    | Phone_Number | Email_Address       | ID |
++------------+-----------+----------+----------+-------------+--------+--------------+---------------------+----+
+| Vikas      | Naik      | Pachgaon | Kolhapur | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |  2 |
++------------+-----------+----------+----------+-------------+--------+--------------+---------------------+----+
+1 row in set (0.00 sec)
