@@ -72,3 +72,21 @@ mysql> select * from addressbook;
 | Vikas      | Naik      | Pachgaon   | Kolhapur   | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |
 +------------+-----------+------------+------------+-------------+--------+--------------+---------------------+
 2 rows in set (0.00 sec)
+
+
+						//USE CASE
+
+mysql> update addressbook SET First_Name='prabhakar' WHERE ID=1;
+Query OK, 1 row affected (0.22 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+
+| First_Name | Last_Name | Address    | City       | State       | Zip    | Phone_Number | Email_Address       | ID |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+
+| prabhakar  | Naik      | Vidyanagar | Gadhinglaj | Maharashtra | 416502 |   9977665652 | naikmahesh.naik     |  1 |
+| Vikas      | Naik      | Pachgaon   | Kolhapur   | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |  2 |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+
+2 rows in set (0.00 sec)
+
+mysql>
