@@ -90,3 +90,20 @@ mysql> select * from addressbook;
 2 rows in set (0.00 sec)
 
 mysql>
+
+
+						//USECASE5
+
+
+mysql> DELETE FROM addressbook WHERE ID=1;
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from addressbook;
++------------+-----------+----------+----------+-------------+--------+--------------+---------------------+----+
+| First_Name | Last_Name | Address  | City     | State       | Zip    | Phone_Number | Email_Address       | ID |
++------------+-----------+----------+----------+-------------+--------+--------------+---------------------+----+
+| Vikas      | Naik      | Pachgaon | Kolhapur | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |  2 |
++------------+-----------+----------+----------+-------------+--------+--------------+---------------------+----+
+1 row in set (0.00 sec)
+
+mysql>
