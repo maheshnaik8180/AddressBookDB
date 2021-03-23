@@ -282,3 +282,24 @@ mysql> SELECT count(*) from addressbook where type ='Family';
 |        3 |
 +----------+
 1 row in set (0.18 sec)
+
+						//USE CASE11
+
+ysql> insert into addressbook (First_Name,Last_Name,Address,City,State,Zip,Phone_Number,Email_Address,ID,type,AddressBook) values("dhiraj", "desai", "gargoti", "Bhudargad", "Maharashtra", '416506', '9977666699', "dhiraj@gmail.com", '7', "Family", "contact6");
+Query OK, 1 row affected (0.35 sec)
+
+mysql> select * from addressbook;
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+-------------+
+| First_Name | Last_Name | Address    | City       | State       | Zip    | Phone_Number | Email_Address       | ID | type   | AddressBook |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+-------------+
+| Vikas      | Naik      | Pachgaon   | Kolhapur   | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |  2 | Family | contact1    |
+| Mahesh     | Naik      | Vidyanagar | Gadhinglaj | Maharashtra | 416502 |   9977665652 | naikmahesh.naik     |  3 | Family | contact2    |
+| dhiraj     | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977666699 | dhiraj@gmail.com    |  4 | Friend | contact3    |
+| navjyot    | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977668800 | navjyot@gmail.com   |  5 | Friend | contact4    |
+| suraj      | kumbhar   | gadhinglaj | kolhapur   | Maharashtra | 416502 |   9977558800 | suraj@gmail.com     |  6 | Family | contact5    |
+| dhiraj     | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977666699 | dhiraj@gmail.com    |  7 | Family | contact6    |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+-------------+
+6 rows in set (0.10 sec)
+
+mysql>
+
