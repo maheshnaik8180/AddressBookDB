@@ -169,3 +169,106 @@ mysql> select * from addressbook order by city ASC;
 | suraj      | kumbhar   | gadhinglaj | kolhapur   | Maharashtra | 416502 |   9977558800 | suraj@gmail.com     |  6 |
 +------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+
 5 rows in set (0.18 sec)
+
+
+						//USE CASE 9
+
+mysql> alter table addressbook add (type varchar(50) NOT NULL);
+Query OK, 0 rows affected (1.50 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook;
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+------+
+| First_Name | Last_Name | Address    | City       | State       | Zip    | Phone_Number | Email_Address       | ID | type |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+------+
+| Vikas      | Naik      | Pachgaon   | Kolhapur   | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |  2 |      |
+| Mahesh     | Naik      | Vidyanagar | Gadhinglaj | Maharashtra | 416502 |   9977665652 | naikmahesh.naik     |  3 |      |
+| dhiraj     | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977666699 | dhiraj@gmail.com    |  4 |      |
+| navjyot    | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977668800 | navjyot@gmail.com   |  5 |      |
+| suraj      | kumbhar   | gadhinglaj | kolhapur   | Maharashtra | 416502 |   9977558800 | suraj@gmail.com     |  6 |      |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+------+
+5 rows in set (0.00 sec)
+
+mysql> update addressbook set type=Family where id=2;
+ERROR 1054 (42S22): Unknown column 'Family' in 'field list'
+mysql> update addressbook set type=Family where ID=2;
+ERROR 1054 (42S22): Unknown column 'Family' in 'field list'
+mysql> update addressbook set type='Family' where ID=2;
+Query OK, 1 row affected (0.17 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+
+| First_Name | Last_Name | Address    | City       | State       | Zip    | Phone_Number | Email_Address       | ID | type   |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+
+| Vikas      | Naik      | Pachgaon   | Kolhapur   | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |  2 | Family |
+| Mahesh     | Naik      | Vidyanagar | Gadhinglaj | Maharashtra | 416502 |   9977665652 | naikmahesh.naik     |  3 |        |
+| dhiraj     | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977666699 | dhiraj@gmail.com    |  4 |        |
+| navjyot    | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977668800 | navjyot@gmail.com   |  5 |        |
+| suraj      | kumbhar   | gadhinglaj | kolhapur   | Maharashtra | 416502 |   9977558800 | suraj@gmail.com     |  6 |        |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+
+5 rows in set (0.00 sec)
+
+mysql> update addressbook set type='Family' where id=3;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set type='Friend' where id=4;
+Query OK, 1 row affected (0.17 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set type='Friend' where id=5;
+Query OK, 1 row affected (0.16 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set type='Family' where id=6;
+Query OK, 1 row affected (0.17 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+
+| First_Name | Last_Name | Address    | City       | State       | Zip    | Phone_Number | Email_Address       | ID | type   |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+
+| Vikas      | Naik      | Pachgaon   | Kolhapur   | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |  2 | Family |
+| Mahesh     | Naik      | Vidyanagar | Gadhinglaj | Maharashtra | 416502 |   9977665652 | naikmahesh.naik     |  3 | Family |
+| dhiraj     | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977666699 | dhiraj@gmail.com    |  4 | Friend |
+| navjyot    | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977668800 | navjyot@gmail.com   |  5 | Friend |
+| suraj      | kumbhar   | gadhinglaj | kolhapur   | Maharashtra | 416502 |   9977558800 | suraj@gmail.com     |  6 | Family |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+
+5 rows in set (0.00 sec)
+
+mysql> alter table addressbook add (AddressBook varchar(50) NOT NULL);
+Query OK, 0 rows affected (0.94 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update addressbook set AddressBook='contact1' where id=2;
+Query OK, 1 row affected (0.16 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set AddressBook='contact2' where id=3;
+Query OK, 1 row affected (0.16 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set AddressBook='contact3' where id=4;
+Query OK, 1 row affected (0.17 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set AddressBook='contact4' where id=5;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressbook set AddressBook='contact5' where id=6;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+-------------+
+| First_Name | Last_Name | Address    | City       | State       | Zip    | Phone_Number | Email_Address       | ID | type   | AddressBook |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+-------------+
+| Vikas      | Naik      | Pachgaon   | Kolhapur   | Maharashtra | 416500 |   9977669999 | vikasnaik@gmail.com |  2 | Family | contact1    |
+| Mahesh     | Naik      | Vidyanagar | Gadhinglaj | Maharashtra | 416502 |   9977665652 | naikmahesh.naik     |  3 | Family | contact2    |
+| dhiraj     | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977666699 | dhiraj@gmail.com    |  4 | Friend | contact3    |
+| navjyot    | desai     | gargoti    | Bhudargad  | Maharashtra | 416506 |   9977668800 | navjyot@gmail.com   |  5 | Friend | contact4    |
+| suraj      | kumbhar   | gadhinglaj | kolhapur   | Maharashtra | 416502 |   9977558800 | suraj@gmail.com     |  6 | Family | contact5    |
++------------+-----------+------------+------------+-------------+--------+--------------+---------------------+----+--------+-------------+
+5 rows in set (0.02 sec)
