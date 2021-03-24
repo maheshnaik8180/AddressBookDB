@@ -275,13 +275,16 @@ mysql> select * from addressbook;
 
 
 						//USE CASE10
-mysql> SELECT count(*) from addressbook where type ='Family';
-+----------+
-| count(*) |
-+----------+
-|        3 |
-+----------+
-1 row in set (0.18 sec)
+mysql> select type, count(First_Name) from addressbook group by type;
++--------+-------------------+
+| type   | count(First_Name) |
++--------+-------------------+
+| Family |                 4 |
+| Friend |                 2 |
++--------+-------------------+
+2 rows in set (0.18 sec)
+
+mysql>
 
 						//USE CASE11
 
@@ -303,3 +306,103 @@ mysql> select * from addressbook;
 
 mysql>
 
+						//USECASE12
+mysql> create table contacts
+    -> (
+    -> firstname VARCHAR(50) NOT NULL PRIMARY KEY,
+    -> lastname varchar(50) not null,
+    -> address varchar(50) not null,
+    -> phonenumber int not null,
+    -> email varchar(50) not null
+    -> );
+Query OK, 0 rows affected (0.42 sec)
+
+mysql> desc contacts;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| firstname   | varchar(50) | NO   | PRI | NULL    |       |
+| lastname    | varchar(50) | NO   |     | NULL    |       |
+| address     | varchar(50) | NO   |     | NULL    |       |
+| phonenumber | int(11)     | NO   |     | NULL    |       |
+| email       | varchar(50) | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.10 sec)
+
+
+ create table address
+    -> (
+    -> zip varchar(10) not null primary key,
+    -> city varchar(10) not null,
+    -> state varchar(50) not null
+    -> );
+Query OK, 0 rows affected (0.50 sec)
+mysql> desc address;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| zip   | varchar(10) | NO   | PRI | NULL    |       |
+| city  | varchar(10) | NO   |     | NULL    |       |
+| state | varchar(50) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+
+create table contact_address
+    -> (
+    -> firstname varchar(50) not null,
+    -> zip varchar(10) not null,
+    -> foreign key (firstname) references contacts(firstname),
+    -> foreign key (zip) references address(zip)
+    -> );
+Query OK, 0 rows affected (0.65 sec)
+
+mysql> desc contact_address;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| firstname | varchar(50) | NO   | MUL | NULL    |       |
+| zip       | varchar(10) | NO   | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+
+
+create table relation
+    -> (
+    -> type varchar(50),
+    -> primary key(type)
+    ->  );
+Query OK, 0 rows affected (0.38 sec)
+
+
+mysql> desc relation;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| type  | varchar(50) | NO   | PRI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+
+
+create table contact_relation
+    -> (
+    -> firstname varchar(50) not null,
+    -> type varchar(20),
+    -> foreign key (firstname) references contacts (firstname),
+    -> foreign key (type) references relation (type));
+Query OK, 0 rows affected (0.45 sec)
+
+
+
+mysql> desc contact_relation;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| firstname | varchar(50) | NO   | MUL | NULL    |       |
+| type      | varchar(20) | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
